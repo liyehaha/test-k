@@ -11,7 +11,9 @@
  
 ### 安装运行依赖
 
-`yum -y install python36 pip36`
+需要一个代理代理到k8s master节点的6443端口
+
+`yum -y install python36 pip36 ansible`
 
 `pip3 install -r requirements.txt`
 
@@ -29,3 +31,11 @@ python3 deploy-k8s.py --join
 # 帮助
 python3 deploy-k8s.py --help
 ```
+
+### TODO
+
+- 初始化监控工具
+- 初始化集群管理工具
+- 自动代理配置
+- 多网络插件适配
+- 指定版本
