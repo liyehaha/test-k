@@ -1,0 +1,23 @@
+apiVersion: kubeadm.k8s.io/v1beta1
+kind: ClusterConfiguration
+apiServer:
+  certSANs:
+  - 127.0.0.1 {% for key in hosts %}
+  - {{ key }}{% endfor %}
+  timeoutForControlPlane: 4m0s
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controlPlaneEndpoint: "{{ apiserver_proxy_address }}:{{ apiserver_proxy_port }}"
+dns:
+  type: CoreDNS
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+kubernetesVersion: v1.13.0
+networking:
+  dnsDomain: cluster.local
+  podSubnet: "{{ kube_network_subnet }}"
+scheduler: {}
+controllerManager: {}
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: "ipvs"

@@ -1,0 +1,17 @@
+ssh_user: root
+ssh_port: 22
+kube_init_path: /home/works/program/
+apiserver_proxy_address: 172.17.201.125
+apiserver_proxy_port: 6443
+kube_network_plugin_name: flannel
+kube_network_subnet: 10.244.0.0/16
+master:
+  server_name_prefix: master-
+  schedulable: true
+  servers:
+    - 172.17.202.113
+    - 172.17.202.114
+node:
+  server_name_prefix: node-
+  servers:
+    - 172.17.202.115
