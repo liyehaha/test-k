@@ -22,7 +22,7 @@ sed -i "s/\/dev\/mapper\/centos-swap/\#\/dev\/mapper\/centos-swap/g" /etc/fstab
 mount -a
 
 # 设置内核参数
-cat <<EOF >  /etc/sysctl.d/laiye.conf
+cat <<EOF >  /etc/sysctl.d/kc.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.bridge.bridge-nf-call-arptables = 1
@@ -39,7 +39,7 @@ EOF
 sysctl --system
 
 # 设置系统限制
-cat <<EOF > /etc/security/limits.d/10-laiye.conf
+cat <<EOF > /etc/security/limits.d/10-kc.conf
 * hard nofile 655350
 * soft nofile 655350
 root hard nofile 655350
